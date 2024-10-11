@@ -1,0 +1,62 @@
+Docker Notes 
+
+why need it?
+Dosker is nothing but is a contanierization. 
+
+Here if you are developing an some kind of software there are manys Stages included as before the project gets deployed.
+
+Developer
+Tester
+Operation(Production team)
+Server.
+
+Developer:
+
+It means while developing some kind of software or a web app it needs some certain libaries or packages (frameworks, OS level features etc) on a specified versions in it.
+
+The developer contains all of the requirement but the testing team have no knowledge of the specific requirements in the porject in this place the docker is been used to serve the whole software with its appropirate versions as a package. 
+
+The some of the dependencies are not aware by the developer but the tester needs to test the produced software.
+
+For that cofusion the shipping process is been involved which it includes all of the dependencies in it.
+
+Here we may use multiple OS Like Windows and Linux etc. The hypervisor concept is been used . because you can shift your own OS with the required dependencies 
+
+Hardware-->Host OS-->Hypervisor-->Guest OS-->Extracted as an image file.
+
+through that the tester can able to load the same OS in their machine with the required dependecies the tester can test the software.
+
+When you are provding the app to the tester give it as a whole image file to execute it in a virtual machine not as an software.
+
+Through that able to run instances like classes and objects in java. Here we can able to create multiple instances.And as a developer you need to give the complete depencies to the tester.
+
+Tester :
+
+After testing and making some changes in the software the testing team will give the same image file to the production team.
+
+Then the production team passes the image file after performing some analysis regarding the operations of the software.
+
+Then the image file is transferred to the sever.
+
+Here the concept of hypervisors are been used mainly on all areas but the thing is that the hypervisor needs to install an OS inside an another OS.
+
+Just image if you need to run or test an application you need to install a separate OS. By runnng multiple resources on a same hardware which is bulky and waste of resources (CPU,RAM etc)
+
+for avoiding this collision we are using the containers.
+
+By using the containers we need not to install newars. All contains a same cardinal the beauty is it is run on multiple platforms.
+
+Having an specific OS running on an hardware the docker is been installed on it.On docker we can create multiple containers and each containers can able to perform on multiple OS.
+
+Hardware-->OS-->Docker-->App1,App2...App n.
+
+after deveoping a application you pack those with an container and the container produces image and then the image goes to the tester.
+they can create multiple containers and multiple instances each we can call it as containers.
+
+image as class and multiple objects as containers.
+
+With the help of the docker system we can run those applications.
+
+If you need to run the app you need to pull the image and run it on your machine.
+
+In docker some of the concepts are been involved like Docker hub, Docker Engine.
