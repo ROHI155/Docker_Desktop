@@ -1,0 +1,39 @@
+
+Hey guyzz here the '//' represents cmd lines..
+
+// docker image ls : Lists the all the image file that locally present in your system
+
+// docker run hell-world : It runs the image from the local images if it not present in the local images it download the image from docker hub
+
+ Here let's try it with getting the ubuntu's latest version
+ 
+ Pulling the ubuntu image from the docker hub
+
+ // docker image pull ubuntu:latest
+
+ Running the ubuntu 
+
+ // docker run -it &IMAGE ID &WHAT YOU HAVE TO RUN 
+
+ Here I run the terminal in the host Ubuntu and ,I perform some basic commands in it 
+ 
+ // ps
+ // ls
+ 
+ Then I try to ping the google.com it gives error
+
+ bash: ping: command not found
+
+ Here we need to install the ping for that, Firstly we are updating our ubuntu with the following command
+
+ // apt-get update  
+
+ After Updating we need to install the ping command
+
+ // apt-get install -iputils ping
+
+ It will install the ping command. After installing the ping command 
+
+ // ping google.com 
+
+ It pings the google.com 
