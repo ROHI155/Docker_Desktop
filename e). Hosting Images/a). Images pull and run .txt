@@ -1,0 +1,41 @@
+Hey guyzz the double Quotes represents the command lines
+
+Here the Docker desktop contains all of your running images in it 
+If you download any image on Docker it Downloads it on layer by layer only
+
+For Changing the name of the docker 
+
+ // docker run --name $New Name $Img 
+ // docker run --name jinx nginx
+
+ It will change the image name.
+
+ Next the comand we are going to see about is to run a image which is detached from our local host.
+ Simply it runs at all time.
+ 
+ // docker run -d $img name - It starts the image and detached it
+ // docker run -d nginx
+
+When you are running the image it will run and shows the port number also.
+
+But it doesn't available at your local host it runs separately on the container host.In the Docker Desktop it doesn't show the container port number.
+
+To run it on our local host we nee to port bind the image.
+
+//docker run -d -p $SYSTEM PORT:$CONTAINER PORT $IMAGE NAME
+
+// -d detach
+// -p port 
+
+eg:
+//docker run -d -p 4000:80 nginx
+
+Similarly we can run other image which is been remotely obtained through the docker hub.
+
+> docker pull httpd
+> docker run -d httpd
+> docker run -d -p 5100:80 httpd
+
+Like that we can perform this in Python, Postgres, Ubuntu etc..
+
+

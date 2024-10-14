@@ -1,0 +1,59 @@
+
+The Main Component of the docker is Docker's archietecture.
+
+Here we are going to see about how the docker engine's archietecture is performing ?
+
+The Docker Engine contains the three parts,
+
+  Client CLI (Command Line Interface)
+  Rest API (Application Programming Interface)
+  Docker Daemon (Server)
+
+In the Client command line interface the user can give the commands in the CLI Like (run,rm,save,pull).
+
+Here the API tranfers these commands to the Server (Docker Daemon).
+
+Using this we can manage your containers,image,data Volumes, network.
+_____________________________________________________________________
+ Docker CLI
+     |
+Docker Daemon 
+	 |
+ Containerd
+	 |
+    runc
+     |
+ Container 
+_____________________________________________________________________
+
+Here the CLI commads are been processed by thr Docker Daemon.
+
+The containerd is responsible for the creation of 'runc'. 
+
+Accoding to the Number of containers required the runc is also been created.
+
+The runc is responsible for the purpose of creating the containers.
+
+_____________________________________________________________________
+
+Client        |                       Docker Daemon                   Registry 
+ docker build |____        Containers                Image             Ubuntu
+ docker pull  |                                                        NGINX
+ docker run   |            Container 1---------------Ubuntu              . 
+                           Container 2               Nginx               .
+                               .                       .               Image n
+                           Container n               Image n         
+______________________________________________________________________
+
+Here the Containers obtain the image from a repository called registry.
+
+According to that the docker performs based on the request in the CLI.
+
+You can perform the opertions run,pull,stop but once you destroy the container you'll lose the data's in your container.
+
+
+
+
+
+
+echo 'kernal.apparmor_restrict_unpriviledged_userns = 0' | sudo tee /etc/sysctl.d/20-apparmor-do notrestrict.conf
