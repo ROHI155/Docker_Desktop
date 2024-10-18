@@ -1,0 +1,51 @@
+
+Registry, Here the Docker registry contains only the multiple images
+Repository, The repository contains the multiple versions of a corresponding Image.
+
+>Here we are going to create a simple image in docker and push it to the Docker hub
+ 
+ for that purpose we are going to create a simple python program in performing the calculator operations.
+ 
+ >Algorithm:(calc Program):
+
+ 1. Start the Program.
+ 2. Define the Operators functions like add,sub,mul,div etc..
+ 3. In the Dictionary list all the operators you defined above.
+ 4. Next, Define the calc part to get all inputs and operations to be performed.
+ 5. Get the input from user.
+ 6. Get the operation to be performed.
+ 7. perform the operstion obtained by the user.
+ 8. Print the result
+ 9. Stop the Program
+
+ >Creating the Docker File 
+
+ 1. From Img_Name
+ 2. WORK DIR ./LOC (Mainly the ./app is considered as the default working Directory)
+ 3. COPY Program1.py
+ 4. CMD ["python","Program.py"]
+
+ Here the Docker log command show the corresponding logs of a image 
+
+//docker logs Containerid or name :: docker logs nginx
+
+To show the details of your docker information
+
+// docker info
+
+For performing the Docker hub actions
+To logout from the account that logged in previously
+
+// docker logout
+
+To login a new account using this
+
+// docker login
+
+ To generate the tag of a specific image 
+
+//docker tag $IMG FILE $USER_NAME/REPO_NAME:VER_NAME :: docker tag calcpgm rohi151/docker_imaging:latest
+
+To push the image file to the docker hub
+
+//docker push $USER_NAME/REPO_NAME:VER_NAME :: docker push rohi151/docker_imaging:latest
