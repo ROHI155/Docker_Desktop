@@ -1,0 +1,50 @@
+Hey guyzz here we are going to create a simple program for appointment booking 
+
+Our main moto is to create a image on docker and practicing the image creation process
+
+So we are focusing more concentration on Image creation only so only the program is too basic
+
+
+Algorithm:
+
+ 1.Start the program.
+ 2.Print the welcome Statements.
+ 3.Import the Scanner Func().
+ 4.Define the Scanner Func().
+ 5.print the Key Statements 
+ 6.Get input from the use using the Scanner function.
+ 7.Print all the obtained details from the user.
+ 8.End the program
+
+
+Image Creation:
+
+For creating Image file asusal we need to frame the Docker File 
+
+Here are the docker file contains the Following.
+
+FROM openjdk:17-jdk-slim
+
+WORKDIR /app
+
+COPY img.java .
+
+RUN javac img.java
+
+CMD ["java","img"]
+
+Next we are going to step into the image creation process.
+
+>Building the Image.
+// docker build -t details .
+
+>Running the Image file.
+//docker run -it details
+
+For Pushing the created Image file to the Docker hub. 
+
+>Creating tag for the created image file.
+//docker tag details rohi15/docker_imaging:latest
+
+>Oushing the Image file to the Docker Hub.
+//docker push rohi15/docker_imaging:latest
