@@ -1,4 +1,4 @@
-# Docker Project
+# Docker
 
 Welcome to the Docker Project! This README outlines the key steps and notes on Docker installation, architecture, image creation, and hosting images, with additional information on creating Docker images using Java. Each section provides structured guidance to help you understand and execute Docker-related tasks efficiently.
 
