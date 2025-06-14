@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Solar System Explorer</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      background: radial-gradient(circle at center, #0b0b3b, #000000 90%);
+      overflow: hidden;
+      color: white;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      height: 100vh;
+    }
+    .sun {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 160px;
+      height: 160px;
+      margin-left: -80px;
+      margin-top: -80px;
+      background: radial-gradient(circle, #ffff33, #ff9900, #cc3300);
+      border-radius: 50%;
+      box-shadow: 0 0 100px 40px #ffd700, inset 0 0 30px #ffff33;
+      z-index: 10;
+      animation: pulsate 1.5s infinite alternate;
+    }
+    .planet {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.9), inset 0 0 6px rgba(255, 255, 255, 0.6);
+      cursor: pointer;
+      transition: transform 0.1s linear;
+    }
+    .planet:hover {
+      transform: scale(1.2);
+    }
+    .orbit {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      border: 1px dashed rgba(255,255,255,0.2);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    .tooltip {
+      position: absolute;
+      background: rgba(0, 0, 0, 0.7);
+      color: #fff;
+      padding: 8px 12px;
+      border-radius: 6px;
+      font-size: 12px;
+      display: none;
+      pointer-events: none;
+      white-space: nowrap;
+      z-index: 1000;
+    }
+    .info-tab {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: rgba(0, 0, 60, 0.8);
+      padding: 20px;
+      border-radius: 15px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      max-width: 300px;
+      box-shadow: 0 0 12px rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(8px);
+      z-index: 15;
+    }
+    .info-tab h2 {
+      margin: 0 0 12px;
+      font-size: 24px;
+      color: #00ffff;
+      border-bottom: 1px solid rgba(255,255,255,0.2);
+      padding-bottom: 6px;
+    }
+    .info-tab p {
+      font-size: 14px;
+      line-height: 1.6;
+      margin: 8px 0;
+      color: #dddddd;
+    }
+    @keyframes pulsate {
+      0% {
+        transform: scale(1);
+      }
+      100% {
+        transform: scale(1.1);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="sun"></div>
+  <div class="info-tab">
+    <h2>Solar System Explorer</h2>
+    <p>Hover over planets to see their names and facts.</p>
+  </div>
+  <div id="tooltip" class="tooltip"></div>
+  <script>
+    const planets = [
+      { name: 'Mercury', color: '#bbbbbb', size: 10, orbit: 80, speed: 47, info: 'Closest planet to the Sun.' },
+      { name: 'Venus', color: '#e1ad01', size: 14, orbit: 110, speed: 35, info: 'Shrouded in toxic clouds.' },
+      { name: 'Earth', color: '#2a75bb', size: 16, orbit: 140, speed: 30, info: 'Our home planet.' },
+      { name: 'Mars', color: '#b22222', size: 12, orbit: 180, speed: 24, info: 'Known as the Red Planet.' },
+      { name: 'Jupiter', color: '#d2b48c', size: 30, orbit: 240, speed: 13, info: 'Largest planet in the solar system.' },
+      { name: 'Saturn', color: '#c2a24f', size: 26, orbit: 300, speed: 9, info: 'Famous for its rings.' },
+      { name: 'Uranus', color: '#7fdbff', size: 22, orbit: 360, speed: 6, info: 'Rotates on its side.' },
+      { name: 'Neptune', color: '#4169e1', size: 20, orbit: 420, speed: 5, info: 'Known for strong winds.' }
+    ];
+    
+    const tooltip = document.getElementById('tooltip');
+    planets.forEach((planet) => {
+      const orbit = document.createElement('div');
+      orbit.className = 'orbit';
+      orbit.style.width = orbit.style.height = (planet.orbit * 2) + 'px';
+      document.body.appendChild(orbit);
+      const pd = document.createElement('div');
+      pd.className = 'planet';
+      pd.style.width = planet.size + 'px';
+      pd.style.height = planet.size + 'px';
+      pd.style.background = planet.color;
+      document.body.appendChild(pd);
+      let angle = Math.random() * Math.PI * 2;
+      function animate() {
+        angle += 0.002 * (planet.speed / 47);
+        const x = Math.cos(angle) * planet.orbit;
+        const y = Math.sin(angle) * planet.orbit;
+        pd.style.transform = `translate(calc(-50% + ${x}px), calc(-50% + ${y}px))`;
+        requestAnimationFrame(animate);
+      }
+      animate();
+      pd.addEventListener('mouseenter', () => {
+        tooltip.innerText = planet.name + ': ' + planet.info;
+        tooltip.style.display = 'block';
+      });
+      pd.addEventListener('mousemove', e => {
+        tooltip.style.left = e.pageX + 10 + 'px';
+        tooltip.style.top = e.pageY - 20 + 'px';
+      });
+      pd.addEventListener('mouseleave', () => {
+        tooltip.style.display = 'none';
+      });
+    });
+  </script>
+</body>
+</html>
